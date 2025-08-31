@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Access</title>
+  <style>
+    body {
+      background: black;
+      color: #00ff00;
+      font-family: monospace;
+      padding: 20px;
+      font-size: 18px;
+    }
+    .line {
+      margin: 5px 0;
+      animation: blink 1s infinite alternate;
+    }
+    @keyframes blink {
+      from { opacity: 1; }
+      to { opacity: 0.5; }
+    }
+  </style>
+</head>
+<body>
+  <h2>[+] Connecting to Victim Device...</h2>
+  <div id="console"></div>
+
+  <script>
+    const lines = [
+      "[+] Handshake Established ✔",
+      "[+] Scanning Files... ███████▒▒▒▒▒▒▒ 68%",
+      "[+] Accessing Contacts ✔",
+      "[+] Accessing Photos ✔",
+      "[+] Accessing Messages ✔",
+      "[!] Data Transfer Complete ✅",
+      ">>> SYSTEM COMPROMISED ⚡"
+    ];
+
+    let i = 0;
+    function showLine() {
+      if (i < lines.length) {
+        const div = document.createElement("div");
+        div.className = "line";
+        div.textContent = lines[i];
+        document.getElementById("console").appendChild(div);
+        i++;
+        setTimeout(showLine, 1500);
+      }
+    }
+    showLine();
+  </script>
+</body>
+</html>
